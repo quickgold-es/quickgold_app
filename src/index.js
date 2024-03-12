@@ -6,7 +6,9 @@ const PORT = 4000;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-require("dotenv").config();
+const dotenv = require("dotenv");
+
+dotenv.config({ path: "../.env" });
 
 // Configurar body-parser middleware
 const app = express();
@@ -34,8 +36,8 @@ connection.connect(function (err) {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "dev@quickgold.es",
-    pass: "zaadsgipqwwdlbxy",
+    user: process.env.GMAIL_CORREO,
+    pass: process.env.GMAIL_PASSWORD,
   },
 });
 // Rutas
